@@ -1,28 +1,27 @@
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
-import * as firebase from "firebase"
-// import firebase from 'firebase';
+import * as firebase from 'firebase/compat'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBiz5EhDh1fOr5PN0j53-n40MHfatkUaaw",
-  authDomain: "login-demo-954bd.firebaseapp.com",
-  projectId: "login-demo-954bd",
-  storageBucket: "login-demo-954bd.appspot.com",
-  messagingSenderId: "46946629370",
-  appId: "1:46946629370:web:d8c88a4b65783b433fbb43"
+  apiKey: "AIzaSyDbniNWKJkfset9OMS3SncPaSv2Y7U4gu0",
+  authDomain: "rn-login-auth-be3d2.firebaseapp.com",
+  projectId: "rn-login-auth-be3d2",
+  storageBucket: "rn-login-auth-be3d2.appspot.com",
+  messagingSenderId: "168204589386",
+  appId: "1:168204589386:web:3b6792b39c757622e609b3"
 };
 
 // Initialize Firebase
 let app;
-if(firebase.app.length === 0){
-    app = firebase.initializeApp(firebaseConfig);
+if(firebase.apps.length === 0){
+    app = firebase.initializeApp(firebaseConfig)
 }else{
-    app = firebase.app()
+    app = firebase.app();
 }
 
-export const auth = firebase.auth()
+const auth = firebase.auth();
 
-
+export {auth};
