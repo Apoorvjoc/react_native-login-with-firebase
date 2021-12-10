@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import loginScreen from './screens/loginScreen';
 import HomeScreen from './screens/HomeScreen';
 import ApiCall from './screens/ApiCall';
+import HandlingRapidAPI from './screens/HandlingRapidAPI';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,8 @@ export default function App() {
     //      <Stack.Screen name="home" component={HomeScreen} />
     //   </Stack.Navigator>
     // </NavigationContainer>
-    <ApiCall/>
+    // <ApiCall/>
+    <HandlingRapidAPI/>
   );
 }
 
