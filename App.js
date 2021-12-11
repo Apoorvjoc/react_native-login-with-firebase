@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React ,{useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -7,10 +7,17 @@ import loginScreen from './screens/loginScreen';
 import HomeScreen from './screens/HomeScreen';
 import ApiCall from './screens/ApiCall';
 import HandlingRapidAPI from './screens/HandlingRapidAPI';
+import HandleLatLng from './screens/HandleLatLng';
+// import {LatAndLngContext} from "./screens/Context/LatAndLngContext";
+import Test from './screens/Test';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+    const [lat, setLat] = useState()
+    const [lng, setLng] = useState()
+
   return (
     // <NavigationContainer>
     //   <Stack.Navigator>
@@ -19,7 +26,10 @@ export default function App() {
     //   </Stack.Navigator>
     // </NavigationContainer>
     // <ApiCall/>
-    <HandlingRapidAPI/>
+    // <HandlingRapidAPI/>
+      // <HandleLatLng />
+      <Test/>
+    
   );
 }
 

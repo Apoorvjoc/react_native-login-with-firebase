@@ -13,7 +13,7 @@ const HandlingRapidAPI = () => {
 
     useEffect(()=>{
             restaurantsApiCall();
-    } , [lat , lng])
+    } , [])
 
     let restaurantsApiCall = async()=>{
         // let lat = 28.6280;
@@ -30,7 +30,7 @@ const HandlingRapidAPI = () => {
             )
             setLoading(false);
             setData(response.data.data);
-            // console.log(response.data.data);
+            console.log(response.data.data);
         }catch(err){
             setErr(err.message)
             setLoading(false);
@@ -66,4 +66,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+  },
 })
