@@ -4,6 +4,7 @@ import * as Location from "expo-location";
 import axios from "axios";
 
 const Test = () => {
+     const [data, setData] = useState([]);
      const [loading, setLoading] = useState(true);
      const [err, setErr] = useState("");
      const [lat, setLat] = useState("");
@@ -11,7 +12,7 @@ const Test = () => {
      const [errorMsg, setErrorMsg] = useState(null);
 
     useEffect(() => {
-        async () => {
+        (async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== "granted") {
             setErrorMsg("Permission to access location was denied");
@@ -20,15 +21,15 @@ const Test = () => {
         }
         let location = await Location.getCurrentPositionAsync({});
         setLat(location.coords.latitude);
-        console.log(location.coords.latitude);
+       
         setLng(location.coords.longitude);
-        };
+        })();
         //  restaurantsApiCall();
     }, []);
 
-    //  useEffect(() => {
-    //    restaurantsApiCall();
-    //  }, []);
+     useEffect(() => {
+       restaurantsApiCall();
+     }, [lat , lng]);
 
      let restaurantsApiCall = async () => {
        console.log("lat:", lat);
@@ -44,8 +45,8 @@ const Test = () => {
                 },
               }
             );
-            setLoading(false);
             setData(response.data.data);
+            setLoading(false);
             console.log(response.data.data);
         //  console.log(response.data.data);
        } catch (err) {
@@ -56,10 +57,17 @@ const Test = () => {
 
      return (
        <View style={styles.container}>
-            <Text>
-                lat : {lat} and 
-                lng : {lng}
-            </Text>
+         <Text>
+           lat : {lat} and lng : {lng}
+         </Text>
+         <Text>
+           {data.slice(0, 10).map((item, idx) => (
+             <Text key={idx}>
+               {item.name}
+               {/*item.location_id*/}
+             </Text>
+           ))}
+         </Text>
        </View>
      );
 }
