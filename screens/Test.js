@@ -21,7 +21,6 @@ const Test = () => {
         }
         let location = await Location.getCurrentPositionAsync({});
         setLat(location.coords.latitude);
-       
         setLng(location.coords.longitude);
         })();
         //  restaurantsApiCall();
@@ -29,7 +28,7 @@ const Test = () => {
 
      useEffect(() => {
        restaurantsApiCall();
-     }, [lat , lng]);
+     }, []);
 
      let restaurantsApiCall = async () => {
        console.log("lat:", lat);
@@ -60,14 +59,13 @@ const Test = () => {
          <Text>
            lat : {lat} and lng : {lng}
          </Text>
-         <Text>
-           {data.slice(0, 10).map((item, idx) => (
-             <Text key={idx}>
+         
+         {  data == undefined  ||  data.length === 0 ? <Text>Loading.....</Text> : data.map((item, idx) => (
+             item.name && <Text key={idx}>
                {item.name}
-               {/*item.location_id*/}
              </Text>
-           ))}
-         </Text>
+           ))
+         }
        </View>
      );
 }
