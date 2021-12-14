@@ -27,10 +27,14 @@ const Test = () => {
     }, []);
 
      useEffect(() => {
+       if(lat=="" || lng==""){
+         return;
+       }
        restaurantsApiCall();
-     }, []);
+     }, [lat,lng]);
 
      let restaurantsApiCall = async () => {
+
        console.log("lat:", lat);
        console.log("lng:", lng);
        try {
@@ -44,12 +48,16 @@ const Test = () => {
                 },
               }
             );
+            if(response.data.data==undefined){
+              setLoading(false)
+              throw new Error();
+            }
             setData(response.data.data);
             setLoading(false);
             console.log(response.data.data);
         //  console.log(response.data.data);
        } catch (err) {
-         setErr(err.message);
+         setErr("Server Error");
          setLoading(false);
        }
      };
@@ -60,7 +68,7 @@ const Test = () => {
            lat : {lat} and lng : {lng}
          </Text>
          
-         {  data == undefined  ||  data.length === 0 ? <Text>Loading.....</Text> : data.map((item, idx) => (
+         {  loading==true ? <Text>Loading.....</Text> : err != "" ?  <Text>{err}</Text> : data.map((item, idx) => (
              item.name && <Text key={idx}>
                {item.name}
              </Text>
