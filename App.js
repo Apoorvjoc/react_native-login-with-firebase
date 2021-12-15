@@ -10,13 +10,11 @@ import HandlingRapidAPI from './screens/HandlingRapidAPI';
 import HandleLatLng from './screens/HandleLatLng';
 // import {LatAndLngContext} from "./screens/Context/LatAndLngContext";
 import Test from './screens/Test';
+import Search from './screens/Search';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-    const [lat, setLat] = useState()
-    const [lng, setLng] = useState()
 
   return (
     // <NavigationContainer>
@@ -28,7 +26,9 @@ export default function App() {
     // <ApiCall/>
     // <HandlingRapidAPI/>
       // <HandleLatLng />
-      <Test/>
+      // <Test/>
+      <Search/>
+     
     
   );
 }
